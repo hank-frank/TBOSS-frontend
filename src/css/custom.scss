@@ -1,3 +1,365 @@
-.red {
-    color: red;
+@font-face {
+    font-family: 'geomanistregular';
+    src: url('./assets/geomanist-regular-webfont.woff2') format('woff2'),
+    url('./assets/geomanist-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'geomanistlight';
+    src: url('./assets/geomanist-light-webfont.woff2') format('woff2'),
+    url('./assets/geomanist-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+$geo: 'geomanistregular', Arial, Helvetica, sans-serif;
+$geo-light: 'geomanistlight', Arial, Helvetica, sans-serif;
+$blue: #0e192b;
+$blue-5: lighten(#0e192b, 5%);
+$blue-10: lighten(#0e192b, 10%);
+$orange: #8a4314;
+$dark: #222222;
+$dark-5: lighten($dark, 5%);
+$dark-10: lighten($dark, 10%);
+$light: #e3e7ee;
+$light-5: lighten($light, 5%);
+$light-10: lighten($light, 10%);
+
+$nav-width: 70px;
+
+html,body {
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background-color: $light-10;
+    font-family: $geo;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+}
+
+.root {
+    width: 100vw;
+    height: 100vh;
+}
+
+@mixin tiny {
+    @media (min-width: 500px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media (min-width: 980px) {
+        @content;
+    }
+}
+
+@mixin large {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin flex-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-horizontal {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin horizontal-center {
+    @include flex-horizontal;
+    justify-content: center;
+}
+
+@mixin vertical-center {
+    @include flex-vertical;
+    justify-content: center;
+}
+
+//////////////////////////////////////////////////////////
+// Navigation
+//////////////////////////////////////////////////////////
+
+.nav-container {
+    background-color: $light-10;
+    width: $nav-width;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+
+    @include flex-vertical;
+    justify-content: flex-start;
+
+    box-shadow: 2px 0px 16px 9px rgba(0,0,0,0.17);
+    z-index: 10;
+}
+
+.icon-container {
+    width: 100%;
+    @include horizontal-center;
+    cursor: pointer;
+}
+
+.icon-container:hover {
+    background-color: $light-5;
+}
+
+.home-icon {
+    font-size: 28px;
+    margin: 16px 0;   
+    color: $dark; 
+}
+
+.home-icon:hover {
+    color: $dark-10;
+}
+
+//////////////////////////////////////////////////////////
+// Title
+//////////////////////////////////////////////////////////
+
+.title-container {
+    box-shadow: -6px 13px 16px -1px rgba(0,0,0,0.27);
+    background-color: $light-5;
+    height: fit-content;
+    min-height: 80px;
+    color: $dark;
+
+    position: relative;
+    padding-left: $nav-width;
+    width: calc(100% - #{$nav-width});
+
+    @include vertical-center;
+    z-index: 8;
+}
+
+.site-title {
+    margin: 24px 4vw 24px 4vw;
+    font-size: 40px;
+    color: $dark-5;
+    text-align: center;
+    width: calc(100% - 8vw);
+
+    @include mobile {
+        text-align: left;
+    }
+}
+
+//////////////////////////////////////////////////////////
+// Main
+//////////////////////////////////////////////////////////
+
+.main-container {
+    color: $dark-10;
+    background-color: $light-10;
+    padding-left: $nav-width;
+    width: calc(100% - #{$nav-width});
+    z-index: 0;
+
+    @include flex-vertical;
+    justify-content: row;
+    @include mobile {
+        margin-top: 16px;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+}
+
+.main-container.two,.main-container.three {
+    margin-top: 0;
+    > .card {
+        @include mobile {
+            margin-top: 0;
+            // max-width: 60%;
+        }
+    }
+    > .book-now {
+        @include mobile {
+            margin-top: 0;
+        }
+    }
+}
+
+.book-container {
+    padding-left: $nav-width;
+    width: calc(100% - #{$nav-width});
+
+    @include flex-vertical;
+    justify-content: row;
+    @include mobile {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+}
+
+.book-now {
+    color: $light-10;
+    background-color: $dark;
+    padding: 16px;
+    border: 2px solid $dark;
+    font-size: 24px;
+    box-shadow: 12px 13px 16px -1px rgba(0,0,0,0.27);
+    border-radius: 8px;
+    width: 80%;
+    margin: 16px auto;
+    text-align: center;
+
+
+    vertical-align: middle;
+
+    @include mobile {
+        padding: 16px 32px;
+        width: 100%;
+    }
+}
+
+.book-now-20 {
+    @include mobile {
+        width: 20%;
+        margin: 0 0 0 16px;
+    }
+}
+
+.book-now:hover {
+    color: $dark;
+    background-color: $light-5;
+}
+
+.card {
+    @include flex-vertical;
+    width: 80%;
+    margin: 16px auto;
+    padding: 16px 32px;
+    @include mobile {
+        // flex-direction: row;
+        justify-content: flex-start;
+        width: fit-content;
+        min-width: 30%;
+        margin: 16px;
+    }
+    background-color: $light-5;
+    border-radius: 8px;
+    box-shadow: 12px 13px 16px -1px rgba(0,0,0,0.27);
+}
+
+.card-one-third {
+    @include mobile {
+        width: calc(100% / 3);
+    }
+}
+.card-two-thirds {
+    @include mobile {
+        width: calc(calc(100% / 3) * 2);
+    }
+}
+
+.card-full {
+    @include mobile {
+        width: 80%;
+        max-width: 100%;
+    }
+}
+
+.phone-email-container {
+    @include flex-vertical;
+    justify-content: flex-start;
+    text-align: center;
+    width: 95%;
+    padding: 0 2vw;
+
+    @include tiny {
+        width: 100%;
+    }
+    @include mobile {
+        text-align: left;
+        width: fit-content;
+    }
+    
+}
+
+.phone-email-container:not(:first-of-type) {
+    margin-top: 16px;
+}
+
+.phone-title {
+    font-size: 12px;
+    width: fit-content;
+    border-bottom: 1px solid $dark-10;
+    margin: 0 auto;
+    @include mobile {
+        margin: 0;
+    }
+}
+.phone-number {
+    margin: 0;
+    font-size: 18px;
+    word-break:break-all;
+    cursor: pointer;
+    text-decoration: none;
+    color: $dark-10;
+}
+
+.phone-number:hover {
+    color: $dark;
+}
+
+.hours-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.hours.phone-number {
+    margin: 0 0 16px 0;
+}
+
+.testimonial {
+    font-size: 14px;
+}
+.testimonial-name {
+    text-align: center;
+    font-size: 10px;
+
+    @include mobile {
+        text-align: right;
+
+    }
+}
+
+.services.phone-number {
+    word-break: break-word;
+    margin-bottom: 16px;
+}
+
+.map-card.card {
+    padding: 0;
+    width: 90%;
+    margin: 16px auto;
+    @include mobile {
+        margin: 16px;
+    }
+    >.phone-email-container {
+        padding: 0;
+    }
+}
+
+.g-map {
+    border: 0;
+    max-width: 100%;
+    border-radius: 8px;
 }
