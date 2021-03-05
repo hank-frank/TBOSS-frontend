@@ -15,6 +15,7 @@
 }
 
 @import './background.scss';
+@import './logo.scss';
 // Fonts are:
 // Courrier for text
 // Claude Sans itallic for head
@@ -175,6 +176,18 @@ body {
     @include mobile {
         text-align: left;
     }
+}
+
+.logo-image {
+    @include logo;
+   
+    width: 60vw;
+    height: calc(60vw * 0.73);
+    @include mobile {
+        width: 200px;
+        height: 146px;
+    }
+
 }
 
 //////////////////////////////////////////////////////////

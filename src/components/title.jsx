@@ -8,7 +8,8 @@ function Title () {
 
     return (
         <div className="title-container">
-            <h4 className="site-title">TBOSS</h4>
+            {/* <h4 className="site-title">TBOSS</h4> */}
+            <div className="logo-image"></div>
         </div>    
     )
 };
