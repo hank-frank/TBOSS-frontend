@@ -14,6 +14,11 @@
     font-style: normal;
 }
 
+@import './background.scss';
+// Fonts are:
+// Courrier for text
+// Claude Sans itallic for head
+
 $geo: 'geomanistregular', Arial, Helvetica, sans-serif;
 $geo-light: 'geomanistlight', Arial, Helvetica, sans-serif;
 $blue: #0e192b;
@@ -26,6 +31,8 @@ $dark-10: lighten($dark, 10%);
 $light: #e3e7ee;
 $light-5: lighten($light, 5%);
 $light-10: lighten($light, 10%);
+$transparent:rgba(0,0,0,0.5);
+
 
 $nav-width: 70px;
 
@@ -35,11 +42,20 @@ html,body {
     left: 0;
     margin: 0;
     padding: 0;
-    background-color: $light-10;
+    background-color: $dark;
     font-family: $geo;
     height: 100vh;
     width: 100vw;
     overflow: auto;
+}
+
+body {
+    @include mainBackground;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: calc(100vw - $nav-width);
+    height: calc(100vw * 0.5);
+    
 }
 
 .root {
@@ -96,7 +112,7 @@ html,body {
 //////////////////////////////////////////////////////////
 
 .nav-container {
-    background-color: $light-10;
+    background-color: $transparent;
     width: $nav-width;
     position: fixed;
     left: 0;
@@ -117,17 +133,17 @@ html,body {
 }
 
 .icon-container:hover {
-    background-color: $light-5;
+    background-color: $dark-5;
 }
 
 .home-icon {
     font-size: 28px;
     margin: 16px 0;   
-    color: $dark; 
+    color: $light; 
 }
 
 .home-icon:hover {
-    color: $dark-10;
+    color: $light-10;
 }
 
 //////////////////////////////////////////////////////////
@@ -136,10 +152,10 @@ html,body {
 
 .title-container {
     box-shadow: -6px 13px 16px -1px rgba(0,0,0,0.27);
-    background-color: $light-5;
+    background-color: $transparent;
     height: fit-content;
     min-height: 80px;
-    color: $dark;
+    color: $light;
 
     position: relative;
     padding-left: $nav-width;
@@ -152,7 +168,7 @@ html,body {
 .site-title {
     margin: 24px 4vw 24px 4vw;
     font-size: 40px;
-    color: $dark-5;
+    color: $light;
     text-align: center;
     width: calc(100% - 8vw);
 
@@ -167,7 +183,7 @@ html,body {
 
 .main-container {
     color: $dark-10;
-    background-color: $light-10;
+    // background-color: $light-10;
     padding-left: $nav-width;
     width: calc(100% - #{$nav-width});
     z-index: 0;
@@ -208,39 +224,6 @@ html,body {
     }
 }
 
-.book-now {
-    color: $light-10;
-    background-color: $dark;
-    padding: 16px;
-    border: 2px solid $dark;
-    font-size: 24px;
-    box-shadow: 12px 13px 16px -1px rgba(0,0,0,0.27);
-    border-radius: 8px;
-    width: 80%;
-    margin: 16px auto;
-    text-align: center;
-
-
-    vertical-align: middle;
-
-    @include mobile {
-        padding: 16px 32px;
-        width: 100%;
-    }
-}
-
-.book-now-20 {
-    @include mobile {
-        width: 20%;
-        margin: 0 0 0 16px;
-    }
-}
-
-.book-now:hover {
-    color: $dark;
-    background-color: $light-5;
-}
-
 .card {
     @include flex-vertical;
     width: 80%;
@@ -253,9 +236,13 @@ html,body {
         min-width: 30%;
         margin: 16px;
     }
-    background-color: $light-5;
+    // background-color: $light-5;
+    // background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!--Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)--%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1246.8 1692.9'%3E%3Cpath fill='%23eae5e2' d='M-143.1-55.5h1509.4v1826.9H-143.1z'/%3E%3Cpath fill='%23e7a298' d='M-84.8 624.6h1434.9v443.8H-84.8z'/%3E%3C/svg%3E");
     border-radius: 8px;
     box-shadow: 12px 13px 16px -1px rgba(0,0,0,0.27);
+    background-color: rgba(0,0,0,0.5);
+
+    min-height: 200px;
 }
 
 .card-one-third {
@@ -276,7 +263,7 @@ html,body {
     }
 }
 
-.phone-email-container {
+.text-container {
     @include flex-vertical;
     justify-content: flex-start;
     text-align: center;
@@ -293,11 +280,12 @@ html,body {
     
 }
 
-.phone-email-container:not(:first-of-type) {
+.text-container:not(:first-of-type) {
     margin-top: 16px;
 }
 
-.phone-title {
+.text {
+    color: $light;
     font-size: 12px;
     width: fit-content;
     border-bottom: 1px solid $dark-10;
@@ -306,40 +294,11 @@ html,body {
         margin: 0;
     }
 }
-.phone-number {
-    margin: 0;
-    font-size: 18px;
-    word-break:break-all;
-    cursor: pointer;
-    text-decoration: none;
-    color: $dark-10;
+
+.text:hover {
+    color: $light;
 }
 
-.phone-number:hover {
-    color: $dark;
-}
-
-.hours-title {
-    font-size: 18px;
-    margin-bottom: 8px;
-}
-
-.hours.phone-number {
-    margin: 0 0 16px 0;
-}
-
-.testimonial {
-    font-size: 14px;
-}
-.testimonial-name {
-    text-align: center;
-    font-size: 10px;
-
-    @include mobile {
-        text-align: right;
-
-    }
-}
 
 .services.phone-number {
     word-break: break-word;
@@ -356,10 +315,4 @@ html,body {
     >.phone-email-container {
         padding: 0;
     }
-}
-
-.g-map {
-    border: 0;
-    max-width: 100%;
-    border-radius: 8px;
 }

@@ -1,5 +1,5 @@
 {
-  "name": "react-parcel",
+  "name": "tboss",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,14 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SanDiegoCodeSchool/react-parcel.git"
+    "url": ""
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SanDiegoCodeSchool/react-parcel/issues"
-  },
-  "homepage": "https://github.com/SanDiegoCodeSchool/react-parcel#readme",
+  "homepage": " ",
   "dependencies": {
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",

@@ -8,7 +8,7 @@ function Title () {
 
     return (
         <div className="title-container">
-            <h4 className="site-title">Sarah Vaughan Hair</h4>
+            <h4 className="site-title">TBOSS</h4>
         </div>    
     )
 };
