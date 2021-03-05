@@ -54,7 +54,9 @@ body {
     @include mainBackground;
     background-repeat: no-repeat;
     background-size: cover;
-    width: calc(100vw - $nav-width);
+    width: calc(100vw - #{$nav-width});
+    // width: calc(100vw - 70px);
+
     height: calc(100vw * 0.5);
     
 }
